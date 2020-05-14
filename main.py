@@ -2,7 +2,7 @@ import io
 import os
 import sys
 from flask import Flask, request, send_file, jsonify
-from flask_cors import CORS
+from flask_ngrok import run_with_ngrok
 from PIL import Image
 import numpy as np
 import time
@@ -14,8 +14,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Initialize the Flask application
 app = Flask(__name__)
-CORS(app)
-
+run_with_ngrok(app)
 
 # Simple probe.
 @app.route('/', methods=['GET'])
@@ -59,5 +58,6 @@ def run():
 
 if __name__ == '__main__':
     os.environ['FLASK_ENV'] = 'development'
-    port = int(os.environ.get('PORT', 8080))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    app.run()
+   # port = int(os.environ.get('PORT', 8080))
+   # app.run(debug=True, host='0.0.0.0', port=port)
