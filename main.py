@@ -38,8 +38,8 @@ def run():
     img = Image.open(io.BytesIO(data))
 
     # Ensure i,qge size is under 1024
-    if img.size[0] > 1024 or img.size[1] > 1024:
-        img.thumbnail((1024, 1024))
+    #if img.size[0] > 1024 or img.size[1] > 1024:
+    #   img.thumbnail((1024, 1024))
 
     # Process Image
     res = u2net.run(np.array(img))
